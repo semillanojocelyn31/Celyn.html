@@ -88,7 +88,7 @@ section{scroll-margin-top:80px;}
 
 <!-- 📝 ABOUT -->
 <section id="about" class="text-center px-4 py-12 sm:py-16">
-  <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-pink-400 glow-text">✨ About Me ✨</h2>
+  <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-pink-400 glow-text">   ✨ About Me ✨</h2>
   <div class="max-w-md sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-200 space-y-4">
     <p>Hi, it’s me <span class="font-bold text-white">Celyn</span>, a passionate <span class="text-pink-400 font-semibold">2nd Year BSIT Student</span>. I love blending creativity and technology to create projects that feel alive and magical.</p>
     <p> My goal is to use technology to solve real-world problems and create meaningful digital experiences. I’m constantly learning new tools and improving my skills in programming, web development, and creative design software.</p>
@@ -149,7 +149,7 @@ section{scroll-margin-top:80px;}
 
 <!-- 🌸 TUTORIALS -->
 <section id="tutorials" class="text-center px-4 py-12 sm:py-16">
-  <h2 class="text-3xl sm:text-5xl font-extrabold mb-10 text-pink-300 glow-text animate-bounce">✨ YouTube Tutorials ✨</h2>
+  <h2 class="text-3xl sm:text-5xl font-extrabold mb-10 text-pink-300 glow-text animate-bounce">✨ YouTube Tutorials </h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
     <iframe class="rounded-2xl w-full h-56 sm:h-64 glow-border" src="https://www.youtube.com/embed/wCEtWz5imUs" allowfullscreen></iframe>
     <iframe class="rounded-2xl w-full h-56 sm:h-64 glow-border" src="https://www.youtube.com/embed/ezldKx-jPag" allowfullscreen></iframe>
