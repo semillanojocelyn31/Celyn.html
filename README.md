@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -218,12 +218,10 @@ input:checked + .slider:before {
 
 .present-text {
     color: #ffb3f0;
-    text-shadow: 0 0 15px #ff00cc;
 }
 
 .absent-text {
     color: #ff6699;
-    text-shadow: 0 0 15px #ff4d88;
 }
 
 .name-list {
@@ -232,8 +230,6 @@ input:checked + .slider:before {
     margin-top: 10px;
     white-space: pre-line;
 }
-
-html { scroll-behavior: smooth; }
 </style>
 </head>
 
@@ -264,7 +260,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <div id="summaryPanel">
-    <h2 style="text-align:center; color:#ff7eb3;">Attendance Report</h2>
+    <h2 style="text-align:center;">Attendance Report</h2>
     <p id="reportMeta" style="text-align:center;"></p>
 
     <div class="stats-grid">
@@ -281,7 +277,7 @@ html { scroll-behavior: smooth; }
 
 <script>
 const girls = ["Jocelyn Semillano","Andrea Jean Occeña","Gene Mae Caramihan","Jessa Erosido","Jessa Hilardino","Kristine Joy Basa","Lena Bahian","Rechelle An Casilangan","Roxan Pracio","Shannon De La Cruz","Jeca Dagumboy","Martina Cabrillos","Nera Bahilot","Sheila Marie Lañojan","Trisha Agravante"];
-const boys = ["Archie Vidal","John Rogen Bullag","Mario Nebres Jr.","AjhannAylle Marfil","Anthony Espinosa","Dave Rivera","Jeffrey Coriento","Kenneth Espinosa","Kevin James Plaza","Luke Axel Barrocum","Mark Angelou Banatasa","Nathaniel Pojas","Paul John Malba","Rodel Cepeda"];
+const boys = ["Archie Vidal","John Rogen Bullag","Mario Nebres Jr.","Ajhann Aylle Marfil","Anthony Espinosa","Dave Rivera","Jeffrey Coriento","Kenneth Espinosa","Kevin James Plaza","Luke Axel Barrocum","Mark Angelou Banatasa","Nathaniel Pojas","Paul John Malba","Rodel Cepeda"];
 
 document.getElementById('attendanceDate').valueAsDate = new Date();
 
@@ -317,10 +313,10 @@ function generateSummary() {
     document.getElementById('countAbsent').innerText = absent.length;
 
     document.getElementById('listPresent').innerText =
-        present.length > 0 ? present.map(name => "• " + name).join("\n\n") : "None";
+        present.length ? present.map(n => "• " + n).join("\n\n") : "None";
 
     document.getElementById('listAbsent').innerText =
-        absent.length > 0 ? absent.map(name => "• " + name).join("\n\n") : "None";
+        absent.length ? absent.map(n => "• " + n).join("\n\n") : "None";
 
     const dateVal = document.getElementById('attendanceDate').value;
     const subVal = document.getElementById('subjectName').value || "Class Session";
@@ -328,7 +324,7 @@ function generateSummary() {
 
     const panel = document.getElementById('summaryPanel');
     panel.style.display = 'block';
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    panel.scrollIntoView({ behavior: 'smooth' });
 }
 
 /* SPARKLES */
