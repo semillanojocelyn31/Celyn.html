@@ -29,7 +29,7 @@ body {
 
 /* ✨ Stars + sparkles */
 .stars {position:fixed;width:100%;height:100%;background:transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;opacity:.7;z-index:-2;}
-.sparkles {position:fixed;top:0;left:0;width:100%;height:100%;background:transparent url() repeat;background-size:cover;mix-blend-mode:screen;opacity:.3;animation:drift 20s linear infinite;z-index:-1;}
+.sparkles {position:fixed;top:0;left:0;width:100%;height:100%;background:transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;background-size:cover;mix-blend-mode:screen;opacity:.3;animation:drift 20s linear infinite;z-index:-1;}
 @keyframes drift{0%{transform:translate(0,0);}50%{transform:translate(-20px,20px);}100%{transform:translate(20px,-20px);}}
 
 /* ✨ Magical frame */
@@ -43,7 +43,7 @@ body {
 
 /* ✨ Text glow */
 .glow-text{text-shadow:0 0 10px #ff99ff,0 0 20px #ff66cc;}
-.glow-border{box-shadow:0 0 15px 4px #ff66ff;transition:.3s;}
+.glow-border{box-shadow:0 0 15px 4px #ff66ff;transition:.3s;cursor: pointer;}
 .glow-border:hover{box-shadow:0 0 30px 10px #ff99ff;transform:scale(1.03);}
 
 /* ✨ Floating animation */
@@ -123,6 +123,17 @@ section{scroll-margin-top:80px;}
   box-shadow: 0 0 15px #ff66cc;
   font-size: 30px;
 }
+
+/* 🖼️ Modal Lightbox */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  align-items: center; justify-content: center;
+}
+.modal-content { max-width: 90%; max-height: 80%; border: 2px solid #ff66cc; border-radius: 10px; }
 </style>
 </head>
 
@@ -132,6 +143,10 @@ section{scroll-margin-top:80px;}
 <div class="stars"></div>
 <div class="sparkles"></div>
 <div class="magic-frame"></div>
+
+<div id="imageModal" class="modal" onclick="this.style.display='none'">
+  <img class="modal-content" id="modalImg">
+</div>
 
 <nav class="py-3 px-2 text-center text-white font-bold text-sm sm:text-base flex flex-wrap justify-center gap-3 sticky top-0 z-50 bg-pink-700/40 backdrop-blur-md">
   <a href="#home">Home</a>
@@ -148,7 +163,7 @@ section{scroll-margin-top:80px;}
 <section id="home" class="flex flex-col items-center text-center px-4 py-16">
   <h1 class="text-3xl sm:text-4xl font-bold mb-6 glow-text whitespace-nowrap">Welcome to My Portfolio!</h1>
   <div class="relative mb-6">
-    <img src="Just me.jpg" alt="Celyn" class="w-40 h-40 rounded-full border-4 border-pink-500 object-cover glow-border float">
+    <img src="Just me.jpg" alt="Celyn" class="w-40 h-40 rounded-full border-4 border-pink-500 object-cover glow-border float" onclick="openModal(this.src)">
   </div>
 </section>
 
@@ -163,24 +178,27 @@ section{scroll-margin-top:80px;}
   <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">📄 My Resume</h2>
   <div class="max-w-xs mx-auto">
     <div class="bg-[#1a0033]/70 border border-pink-500 rounded-2xl p-4 glow-border float">
-      <img src="resume.jpg" alt="My Resume" class="w-full rounded-lg mb-4">
-      <a href="resume.jpg" download class="inline-block py-2 px-6 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-700 transition">Download</a>
+      <img src="resume.jpg" alt="My Resume" class="w-full rounded-lg mb-4" onclick="openModal(this.src)">
+      <div class="flex gap-2 justify-center">
+        <a href="resume.jpg" target="_blank" class="inline-block py-2 px-4 bg-purple-600 text-white text-xs font-bold rounded-lg hover:bg-purple-700 transition">View Full</a>
+        <a href="resume.jpg" download="Jocelyn_Semillano_Resume.jpg" class="inline-block py-2 px-4 bg-pink-600 text-white text-xs font-bold rounded-lg hover:bg-pink-700 transition">Download</a>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="certificates" class="text-center px-4 py-12">
-  <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">📜 IT Training Certificate</h2>
+  <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">📜 IT Training Certificates</h2>
   <div class="flex flex-col items-center gap-8 max-w-2xl mx-auto">
     <div class="bg-[#1a0033]/70 border border-pink-500 rounded-2xl p-6 glow-border float w-full">
       <p class="text-pink-300 font-semibold mb-2">March 10, 2026</p>
-      <p class="text-gray-200 text-sm mb-4">A touch of magic in technical training.</p>
-      <img src="March 10.jpg" class="w-full h-auto rounded-lg border border-pink-400 shadow-md" alt="Training Certificate 1">
+      <img src="March 10.jpg" class="w-full h-auto rounded-lg border border-pink-400 shadow-md mb-4" alt="Training Certificate 1" onclick="openModal(this.src)">
+      <a href="March 10.jpg" download class="text-xs bg-pink-600/50 p-2 rounded hover:bg-pink-600 transition">Download Certificate</a>
     </div>
     <div class="bg-[#1a0033]/70 border border-pink-500 rounded-2xl p-6 glow-border float w-full">
       <p class="text-pink-300 font-semibold mb-2">March 12, 2026</p>
-      <p class="text-gray-200 text-sm mb-4">Enchanted skills mastered with care.</p>
-      <img src="March 12.jpg" class="w-full h-auto rounded-lg border border-pink-400 shadow-md" alt="Training Certificate 2">
+      <img src="March 12.jpg" class="w-full h-auto rounded-lg border border-pink-400 shadow-md mb-4" alt="Training Certificate 2" onclick="openModal(this.src)">
+      <a href="March 12.jpg" download class="text-xs bg-pink-600/50 p-2 rounded hover:bg-pink-600 transition">Download Certificate</a>
     </div>
   </div>
 </section>
@@ -228,57 +246,25 @@ section{scroll-margin-top:80px;}
 <section id="skills" class="text-center px-4 py-12">
   <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">🛠️ My Skills</h2>
   <div class="flex flex-col items-center gap-8 max-w-md mx-auto">
-    <img src="banner.jpg" class="w-full h-auto rounded-lg glow-border float">
-    <img src="chessboard.png" class="w-full h-auto rounded-lg glow-border float">
-    <img src="figma ecommerce.jpg" class="w-full h-auto rounded-lg glow-border float">
-    <img src="product design.png" class="w-full h-auto rounded-lg glow-border float">
-    <img src="tshirt layout.png" class="w-full h-auto rounded-lg glow-border float">
+    <img src="banner.jpg" class="w-full h-auto rounded-lg glow-border float" onclick="openModal(this.src)">
+    <img src="chessboard.png" class="w-full h-auto rounded-lg glow-border float" onclick="openModal(this.src)">
+    <img src="figma ecommerce.jpg" class="w-full h-auto rounded-lg glow-border float" onclick="openModal(this.src)">
+    <img src="product design.png" class="w-full h-auto rounded-lg glow-border float" onclick="openModal(this.src)">
+    <img src="tshirt layout.png" class="w-full h-auto rounded-lg glow-border float" onclick="openModal(this.src)">
   </div>
 </section>
 
 <section id="experience" class="text-center px-4 py-12">
   <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">🏆 Experience</h2>
   <div class="max-w-md sm:max-w-3xl mx-auto space-y-8 text-center">
-    
     <div class="bg-[#1a0033]/70 border border-pink-500 rounded-2xl p-6 glow-border float">
       <h3 class="text-2xl font-semibold text-pink-300 glow-text mb-2">Video Editing Champion</h3>
       <p class="text-gray-300 mb-2">🏅 Year: 2021</p>
-      <p class="text-gray-200 text-sm mb-4">PNP Anniversary Video Editing Contest.</p>
       <div class="flex flex-col items-center gap-6">
-        <img src="film maker pro.png" class="w-24 h-24 rounded-lg glow-border">
-        <img src="kinemaster.png" class="w-24 h-24 rounded-lg glow-border">
+        <img src="film maker pro.png" class="w-24 h-24 rounded-lg glow-border" onclick="openModal(this.src)">
+        <img src="kinemaster.png" class="w-24 h-24 rounded-lg glow-border" onclick="openModal(this.src)">
       </div>
     </div>
-
-    <div class="bg-[#1a0033]/70 border border-pink-500 rounded-2xl p-6 glow-border float">
-      <h3 class="text-2xl font-semibold text-pink-300 glow-text mb-2">Tarpapel Editor in Birthdays</h3>
-      <p class="text-pink-300 font-medium mb-2">🎨 Year: 2020</p>
-      <p class="text-gray-200 text-sm mb-6 max-w-lg mx-auto">Designed personalized layouts using Canva.</p>
-      <div class="flex flex-col items-center">
-        <div class="relative w-28 h-28 bg-[#0a0015] border-2 border-pink-600 rounded-xl shadow-[0_0_15px_#ff66cc] flex items-center justify-center">
-          <img src="canva.jpeg" class="w-12 h-12 rounded-lg" alt="Canva Logo">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="tutorials" class="text-center px-4 py-12">
-  <h2 class="text-3xl font-bold mb-10 text-pink-300 glow-text whitespace-nowrap">✨ YouTube Tutorials</h2>
-  <div class="flex flex-col items-center gap-8 max-w-2xl mx-auto">
-    <iframe class="rounded-xl w-full h-64 glow-border" src="https://www.youtube.com/embed/wCEtWz5imUs"></iframe>
-    <iframe class="rounded-xl w-full h-64 glow-border" src="https://www.youtube.com/embed/ezldKx-jPag"></iframe>
-  </div>
-</section>
-
-<section id="tools" class="text-center px-4 py-12">
-  <h2 class="text-3xl font-bold mb-8 text-pink-400 glow-text whitespace-nowrap">🪄 Tools I Used</h2>
-  <div class="flex flex-row justify-center items-center gap-4 sm:gap-6">
-    <img src="canva.jpeg" class="w-16 h-16 sm:w-24 sm:h-24 rounded-lg glow-border">
-    <img src="figma.jpeg" class="w-16 h-16 sm:w-24 sm:h-24 rounded-lg glow-border">
-    <img src="Adobe Photoshop.jpeg" class="w-16 h-16 sm:w-24 sm:h-24 rounded-lg glow-border">
-    <img src="Adobe premiere.jpeg" class="w-16 h-16 sm:w-24 sm:h-24 rounded-lg glow-border">
   </div>
 </section>
 
@@ -297,11 +283,17 @@ section{scroll-margin-top:80px;}
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
 <div id="chat-container">
   <div id="chat-header"><span>Celyn's Magical Bot</span><button onclick="toggleChat()">✖</button></div>
-  <div id="chat-messages"><div class="bot-msg">✨ Hello! I am Celyn's magical assistant. I know everything about her portfolio! Ask me about her BSIT class, her awards, or how to see her resume.</div></div>
+  <div id="chat-messages"><div class="bot-msg">✨ Hello! I am Celyn's assistant. Ask me about her BSIT-2B Attendance system or how to download her resume!</div></div>
   <div id="chat-input-area"><input type="text" id="chat-input" placeholder="Ask about Celyn..." onkeypress="handleChat(event)"></div>
 </div>
 
 <script>
+  /* --- 🖼️ LIGHTBOX LOGIC --- */
+  function openModal(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imageModal').style.display = 'flex';
+  }
+
   /* --- 🧪 ATTENDANCE SYSTEM LOGIC --- */
   const girls = ["Jocelyn Semillano","Andrea Jean Occeña","Gene Mae Caramihan","Jessa Erosido","Jessa Hilardino","Kristine Joy Basa","Lena Bahian","Rechelle An Casilangan","Roxan Pracio","Shannon De La Cruz","Jeca Dagumboy","Martina Cabrillos","Nera Bahilot","Sheila Marie Lañojan","Trisha Agravante"];
   const boys = ["Archie Vidal","John Rogen Bullag","Mario Nebres Jr.","AjhannAylle Marfil","Anthony Espinosa","Dave Rivera","Jeffrey Coriento","Kenneth Espinosa","Kevin James Plaza","Luke Axel Barrocum","Mark Angelou Banatasa","Nathaniel Pojas","Paul John Malba","Rodel Cepeda"];
@@ -318,7 +310,6 @@ section{scroll-margin-top:80px;}
       </div>`;
     });
   }
-
   renderList(girls, 'girlsList');
   renderList(boys, 'boysList');
 
@@ -333,16 +324,12 @@ section{scroll-margin-top:80px;}
     document.getElementById('countAbsent').innerText = absent.length;
     document.getElementById('listPresent').innerText = present.length > 0 ? present.map(n => "• " + n).join("\n") : "None";
     document.getElementById('listAbsent').innerText = absent.length > 0 ? absent.map(n => "• " + n).join("\n") : "None";
-    const dateVal = document.getElementById('attendanceDate').value;
-    const subVal = document.getElementById('subjectName').value || "Class Session";
-    document.getElementById('reportMeta').innerText = `${subVal} — ${dateVal}`;
-    const panel = document.getElementById('summaryPanel');
-    panel.classList.remove('hidden');
-    panel.style.display = 'block';
-    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('reportMeta').innerText = `${document.getElementById('subjectName').value || "Class Session"} — ${document.getElementById('attendanceDate').value}`;
+    document.getElementById('summaryPanel').style.display = 'block';
+    document.getElementById('summaryPanel').scrollIntoView({ behavior: 'smooth' });
   }
 
-  /* --- 🤖 CHATBOT KNOWLEDGE LOGIC --- */
+  /* --- 🤖 CHATBOT LOGIC --- */
   function toggleChat() {
     const chat = document.getElementById('chat-container');
     chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'flex' : 'none';
@@ -363,43 +350,10 @@ section{scroll-margin-top:80px;}
 
   function botResponse(u) {
     const t = u.toLowerCase();
-    let r = "That's magical! ✨ I'm not quite sure about that specific detail, but I can tell you about Celyn's Awards, her IT Certificates, or the BSIT-2B Attendance System!";
-
-    // Detailed Inquiry Logic
-    if (t.includes("hi") || t.includes("hello") || t.includes("hey")) {
-      r = "Hello! I am Celyn's magical assistant. How can I help you explore her portfolio today? ✨";
-    } 
-    else if (t.includes("resume") || t.includes("cv") || t.includes("download")) {
-      r = "You can view and download Celyn's resume in the 'Resume' section. It's designed to showcase her journey as an IT student! 📄";
-    }
-    else if (t.includes("cert") || t.includes("training") || t.includes("march")) {
-      r = "Celyn earned two IT Training Certificates in March 2026 (specifically March 10 and March 12). Check them out in the 'Certificates' section! 📜";
-    }
-    else if (t.includes("attendance") || t.includes("simulation") || t.includes("bsit-2b") || t.includes("bsit")) {
-      r = "Celyn built the BSIT-2B Attendance System! It manages a class of " + (girls.length + boys.length) + " students. You can try the live demo in the 'Simulation' section! 🧪";
-    }
-    else if (t.includes("skills") || t.includes("design") || t.includes("figma") || t.includes("canva")) {
-      r = "Celyn is skilled in UI/UX (Figma), Canva, Adobe Photoshop, and Premiere Pro. She's created everything from e-commerce layouts to t-shirt designs! 🛠️";
-    }
-    else if (t.includes("pnp") || t.includes("champion") || t.includes("award") || t.includes("experience")) {
-      r = "In 2021, Celyn became a Video Editing Champion in the PNP Anniversary Video Editing Contest! She has also been a Tarpapel Editor since 2020. 🏅";
-    }
-    else if (t.includes("youtube") || t.includes("video") || t.includes("tutorial")) {
-      r = "Check out Celyn's tutorials! You can watch her editing and design videos directly in the 'Tutorials' section of this page. 🎥";
-    }
-    else if (t.includes("tools") || t.includes("adobe")) {
-      r = "The magical tools Celyn uses include Canva, Figma, Adobe Photoshop, and Adobe Premiere Pro. 🪄";
-    }
-    else if (t.includes("contact") || t.includes("message") || t.includes("email")) {
-      r = "You can send a message directly to Celyn using the 'Let's Connect' form at the bottom of the page! 💌";
-    }
-    else if (t.includes("who is celyn") || t.includes("about")) {
-      r = "Celyn (Jocelyn Semillano) is a talented 2nd Year BSIT Student with a passion for magical digital design and technology! ✨";
-    }
-    else if (t.includes("thank")) {
-      r = "You're very welcome! Feel free to ask more or keep exploring! ✨";
-    }
-
+    let r = "That's magical! ✨ Try asking about her 'resume', 'certificates', or the 'BSIT attendance system'.";
+    if (t.includes("resume") || t.includes("download")) r = "You can download Celyn's resume in the Resume section! Just click the pink Download button. 📄";
+    else if (t.includes("cert") || t.includes("training")) r = "Celyn completed IT training in March 2026. You can see and download her certificates in the Certificates section! 📜";
+    else if (t.includes("hi") || t.includes("hello")) r = "Hello! Ready to see some magic? ✨";
     addMessage(r, 'bot-msg');
   }
 </script>
