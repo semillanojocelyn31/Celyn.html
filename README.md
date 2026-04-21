@@ -336,7 +336,7 @@
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
 <div id="chat-container">
     <div id="chat-header"><span>Celyn's Bot</span><button onclick="toggleChat()">✖</button></div>
-    <div id="chat-messages"><div class="bot-msg">✨ Hi! How can I help?</div></div>
+    <div id="chat-messages"><div class="bot-msg">✨ Hi! I'm Celyn's magical assistant. How can I help you today?</div></div>
     <div id="chat-input-area"><input type="text" id="chat-input" placeholder="Type..." onkeypress="handleChat(event)"></div>
 </div>
 
@@ -345,23 +345,60 @@
         const chat = document.getElementById('chat-container');
         chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'flex' : 'none';
     }
+    
     function handleChat(e) {
         if (e.key === 'Enter') {
             const input = document.getElementById('chat-input');
             const msg = input.value.trim();
-            if (msg) { addMessage(msg, 'user-msg'); input.value = ''; setTimeout(() => botResponse(msg), 500); }
+            if (msg) { 
+                addMessage(msg, 'user-msg'); 
+                input.value = ''; 
+                setTimeout(() => botResponse(msg), 500); 
+            }
         }
     }
+    
     function addMessage(t, c) {
         const d = document.createElement('div'); d.className = c; d.innerText = t;
         const m = document.getElementById('chat-messages'); m.appendChild(d); m.scrollTop = m.scrollHeight;
     }
+    
     function botResponse(u) {
-        let r = "That's magical!";
+        let r = "That sounds magical! Could you tell me more?";
         const t = u.toLowerCase();
-        if (t.includes("resume")) r = "Download my resume in the section above! 📄";
-        else if (t.includes("cert")) r = "Check out my IT Training Certificates! 🏆";
-        else if (t.includes("simulation") || t.includes("attendance")) r = "Check out the BSIT-2B Attendance system! ✨";
+        
+        // Navigation & General Knowledge
+        if (t.includes("hello") || t.includes("hi") || t.includes("hey")) {
+            r = "Magical greetings! I can tell you about Celyn's projects, skills, or even show you her resume. What are you curious about?";
+        }
+        else if (t.includes("who are you") || t.includes("bot")) {
+            r = "I'm Celyn's AI assistant, here to guide you through her enchanted portfolio! ✨";
+        }
+        else if (t.includes("resume") || t.includes("cv")) {
+            r = "You can view or download Celyn's resume in the 'Resume' section. It's a great look at her journey! 📄";
+        }
+        else if (t.includes("cert") || t.includes("training")) {
+            r = "Celyn has completed several IT training programs. You can find her certificates from March 2026 in the 'Certificates' section! 🏆";
+        }
+        else if (t.includes("simulation") || t.includes("attendance") || t.includes("system")) {
+            r = "Celyn built a custom BSIT-2B Attendance System! You can try it out yourself in the Simulation section above. ✨";
+        }
+        else if (t.includes("project") || t.includes("work")) {
+            r = "She has worked on Figma e-commerce designs, UI layouts, and banner graphics. Check out the 'My Projects' section! 🛠️";
+        }
+        else if (t.includes("skill") || t.includes("tool")) {
+            r = "Celyn is skilled in Canva, Figma, Photoshop, Premiere Pro, and web tech like HTML/Tailwind! 🪄";
+        }
+        else if (t.includes("video") || t.includes("edit") || t.includes("youtube")) {
+            r = "She's a Video Editing Champion (2021)! You can watch her tutorials in the YouTube section. 🎥";
+        }
+        else if (t.includes("contact") || t.includes("email") || t.includes("message")) {
+            r = "You can send her a message directly through the 'Contact' form at the bottom of the page! 💌";
+        }
+        else if (t.includes("thank")) {
+            r = "You're very welcome! Let me know if there's anything else you'd like to see. ✨";
+        }
+
         addMessage(r, 'bot-msg');
     }
 
