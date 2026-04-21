@@ -154,7 +154,7 @@ section{scroll-margin-top:80px;}
 <section id="about" class="text-center px-4 py-12">
   <h2 class="text-3xl font-bold mb-6 text-pink-400 glow-text">✨ About Me ✨</h2>
   <div class="max-w-md sm:max-w-2xl mx-auto text-gray-200">
-    <p>I am <span class="font-bold text-white">Celyn</span>, a 2nd Year BSIT Student. I create magical digital experiences through technology and design.</p>
+    <p>I am <span class="font-bold text-white">Jocelyn Semillano</span>, a 2nd Year BSIT Student at CPSU-Moises Padilla Campus. I specialize in frontend and backend development using HTML, CSS, PHP, and MySQL.</p>
   </div>
 </section>
 
@@ -242,7 +242,7 @@ section{scroll-margin-top:80px;}
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
 <div id="chat-container">
   <div id="chat-header"><span>Celyn's Magical Bot</span><button onclick="toggleChat()">&times;</button></div>
-  <div id="chat-messages"><div class="bot-msg">✨ Hello! I am Celyn's assistant. Ask me about her BSIT-2B Attendance system or how to download her resume!</div></div>
+  <div id="chat-messages"><div class="bot-msg">✨ Hello! I am Celyn's assistant. Ask me about her BSIT-2B Attendance system, IT certificates, or web development skills!</div></div>
   <div id="chat-input-area"><input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChat(event)"></div>
 </div>
 
@@ -313,13 +313,15 @@ section{scroll-margin-top:80px;}
     } else if (t.includes("resume") || t.includes("download")) {
       r = "You can download Celyn's resume in the Resume section. Just click the pink 'Download' button! 📄";
     } else if (t.includes("cert") || t.includes("training") || t.includes("march")) {
-      r = "Celyn completed IT Training Seminars in March 2026. You can view her certificates in the Certificates section! 📜";
+      r = "Celyn completed IT Training Seminars in March 2026 at CPSU-Moises Padilla Campus. You can view her certificates for 'Innovative Systematic Solution' (March 10) and 'CISCO Networking Fundamentals' (March 12) in the Certificates section! 📜";
     } else if (t.includes("attendance") || t.includes("bsit") || t.includes("simulation")) {
-      r = "The BSIT-2B Attendance System is an interactive simulation Celyn built to track student attendance. Try it out in the Simulation section! 🧪";
-    } else if (t.includes("skills") || t.includes("expert")) {
-      r = "Celyn specializes in BSIT studies, including web development and system design! ✨";
+      r = "The BSIT-2B Attendance System is an interactive tool Celyn built using HTML, CSS, and JavaScript to track student presence for her class. Try it out in the Simulation section! 🧪";
+    } else if (t.includes("skills") || t.includes("expert") || t.includes("code")) {
+      r = "Celyn is skilled in web development (HTML, CSS, PHP, MySQL) and UI/UX design using Figma and Canva! ✨";
     } else if (t.includes("contact") || t.includes("message")) {
-      r = "You can send a magical message to Celyn using the form in the Contact section! 💌";
+      r = "You can send a magical message to Celyn using the 'Let's Connect' form in the Contact section! 💌";
+    } else if (t.includes("about") || t.includes("who is celyn")) {
+        r = "Jocelyn 'Celyn' Semillano is a 2nd Year BSIT student from Moises Padilla, Negros Occidental. She is passionate about creating visual digital experiences! ✨";
     }
     
     addMsg(r, 'bot-msg');
